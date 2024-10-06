@@ -18,5 +18,6 @@ class EmiParameter extends Model
         'interest_rate',
         'bank_id',
         'status',
+        'data_source',
     ];
 }

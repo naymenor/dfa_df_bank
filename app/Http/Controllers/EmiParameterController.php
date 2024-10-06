@@ -74,6 +74,7 @@ class EmiParameterController extends Controller
                     'process_fee' => $request->process_fee,
                     'down_payment' => $request->down_payment,
                     'interest_rate' => $request->interest_rate,
+                    'data_source' => 'DF BANK',
                     'status' => 1,
 
 
