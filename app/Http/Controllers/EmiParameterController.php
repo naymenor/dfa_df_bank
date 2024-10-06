@@ -67,7 +67,7 @@ class EmiParameterController extends Controller
 
                 $emi = EmiParameter::create([
                     'uuid' => $uuid,
-                    'bank_id' => Auth::user()->bank->id,
+                    // 'bank_id' => Auth::user()->bank->id,
                     'emi_no' => $request->emi_no,
                     'title' => $request->title,
                     'duration' => $request->duration,
