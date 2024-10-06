@@ -20,11 +20,7 @@ use App\Models\BankStatementInfo;
 |
 */
 Route::post('login', [AuthController::class, 'login']);
-Route::get('login', function() {
-    return response()->json(['success' => false,'message' => 'Unauthorized'], 401);
-});
 
-Route::post('login', [ 'as' => 'login']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
