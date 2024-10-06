@@ -15,7 +15,7 @@ class EmiParameterController extends Controller
     {
 
 
-        $emis = EmiParameter::paginate(5);
+        $emis = EmiParameter::get();
 
         if ($emis) {
             return response()->json([
