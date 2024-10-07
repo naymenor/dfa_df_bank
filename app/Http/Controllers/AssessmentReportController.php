@@ -129,9 +129,9 @@ class AssessmentReportController extends Controller
     {
         $customer = AssessmentReport::where('customer_id', $id)->first();
         if($customer){
-            if($request->has('personal_information')){
-                $customer->personal_information = $request->personal_information;
-                $customer->check_personal = 1;                
+            if($request->has('personal_info')){
+                $customer->personal_info = $request->personal_info;
+                // $customer->check_personal = 1;                
             }
             if($request->has('financial_information')){
                 $customer->financial_information = $request->financial_information;
@@ -180,7 +180,9 @@ class AssessmentReportController extends Controller
                 'message' => 'Customer profile update successfully',
                 'data' => $customer
             ]);
-        }else{
+        }
+        else
+        {
             return response()->json([  
                 'success' => false,
                 'message' => 'Customer not found',
