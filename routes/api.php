@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssessmentReportController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -29,7 +30,12 @@ Route::resource('/bankst', BankStatementInfoController::class);
 Route::group(["prefix"=>"dbl",'middleware' => ['auth:sanctum']],function(){
     Route::resource('/emi', EmiParameterController::class);
     Route::resource('/CS', CreditScoreParameterController::class);
-    // Route::resource('/bankst', CreditScoreController::class);
+    Route::resource('/customer', AssessmentReportController::class);
+    // Route::resource('/bankst', CreditScoreController::class); 
+});
 
-    
+Route::fallback(function (Request $request) {
+    return response()->json([
+        'message' => 'Route not found'
+    ], 404);
 });

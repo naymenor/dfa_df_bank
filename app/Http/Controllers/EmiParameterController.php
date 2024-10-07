@@ -67,7 +67,7 @@ class EmiParameterController extends Controller
 
                 $emi = EmiParameter::create([
                     'uuid' => $uuid,
-                    // 'bank_id' => Auth::user()->bank->id,
+                    'bank_id' => 1,
                     'emi_no' => $request->emi_no,
                     'title' => $request->title,
                     'duration' => $request->duration,
@@ -179,7 +179,7 @@ class EmiParameterController extends Controller
                 if ($findEmi) {
                     return response()->json([
                         'success' => true,
-                        'message' => 'Emi created Successfully',
+                        'message' => 'Emi Updated Successfully',
                         'data' => $findEmi
                     ], 202);
                 } else {

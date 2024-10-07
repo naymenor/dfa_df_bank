@@ -19,6 +19,7 @@ class EmiParameter extends Model
         'bank_id',
         'status',
         'data_source',
-        'created_by'
+        'created_by',
+        'bank_id'
     ];
 }
