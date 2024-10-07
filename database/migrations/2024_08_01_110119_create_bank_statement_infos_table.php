@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('bank_statement_infos', function (Blueprint $table) {
             $table->id();
-            $table->string('customer_id');
-            $table->string('nid');
-            $table->string('mobile');
-            $table->decimal('regular_monthly_income', 15, 2);
-            $table->date('regular_income_date');
-            $table->decimal('regular_payment_amount', 15, 2);
-            $table->date('regular_payment_date');
-            $table->decimal('monthly_balance', 15, 2);
+            $table->string('customer_id')->nullable();
+            $table->string('nid')->nullable();
+            $table->string('mobile')->nullable();
+            $table->string('uuid')->unique();
+            $table->decimal('regular_monthly_income', 15, 2)->nullable();
+            $table->date('regular_income_date')->nullable();
+            $table->decimal('regular_payment_amount', 15, 2)->nullable();
+            $table->date('regular_payment_date')->nullable();
+            $table->decimal('monthly_balance', 15, 2)->nullable();
             $table->timestamps();
         });
     }

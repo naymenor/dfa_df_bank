@@ -13,17 +13,18 @@ return new class extends Migration
     {
         Schema::create('bank_statement_raw_data', function (Blueprint $table) {
             $table->id();
-            $table->string('customer_id');
-            $table->string('nid');
-            $table->string('mobile');
-            $table->date('trnx_date');
-            $table->text('particulars');
-            $table->string('chq_no');
-            $table->decimal('withdrow', 15, 2);
-            $table->decimal('deposit', 15, 2);
-            $table->decimal('balance', 15, 2);
-            $table->string('created_by');
-            $table->string('data_source');
+            $table->string('uuid')->unique();
+            $table->string('customer_id')->nullable();
+            $table->string('nid')->nullable();
+            $table->string('mobile')->nullable();
+            $table->date('trnx_date')->nullable();
+            $table->text('particulars')->nullable();
+            $table->string('chq_no')->nullable();
+            $table->decimal('withdrow', 15, 2)->nullable();
+            $table->decimal('deposit', 15, 2)->nullable();
+            $table->decimal('balance', 15, 2)->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('data_source')->nullable();
             $table->timestamps();
         });
     }

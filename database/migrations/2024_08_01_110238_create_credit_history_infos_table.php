@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('credit_history_infos', function (Blueprint $table) {
             $table->id();
-            $table->string('customer_id'); 
-            $table->string('nid');
-            $table->string('mobile');
+            $table->string('uuid')->unique();
+            $table->string('customer_id')->nullable();
+            $table->string('nid')->nullable();
+            $table->string('mobile')->nullable();
             $table->decimal('average_delay_for_payment', 15, 2)->nullable();
             $table->decimal('total_credit_amount', 15, 2)->nullable();
             $table->decimal('total_credit_utilized', 15, 2)->nullable();
@@ -25,8 +26,8 @@ return new class extends Migration
             $table->integer('no_of_installment_accounts')->nullable();
             $table->integer('no_of_mortgage_accounts')->nullable();
             $table->integer('no_of_new_credit_accounts')->nullable();
-            $table->string('created_by');
-            $table->string('data_source');
+            $table->string('created_by')->nullable();
+            $table->string('data_source')->nullable();
             $table->timestamps();
         });
     }

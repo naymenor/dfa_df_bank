@@ -262,6 +262,7 @@ class CreditScoreParameterController extends Controller
                     'requredata' => $request->requredata,
                     'action' => $request->action,
                     'data_source' => 'BANK_WEB',
+                    'created_by' => 'BANK_WEB',
                     'status' => $request->status,
 
                 ]);

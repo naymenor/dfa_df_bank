@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('interest_rate')->nullable();
             $table->integer('bank_id')->nullable();
             $table->integer('status')->nullable();
-            $table->string('created_by');
-            $table->string('data_source');
+            $table->string('created_by')->nullable();
+            $table->string('data_source')->nullable();
             $table->timestamps();
         });
     }
