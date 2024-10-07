@@ -292,7 +292,14 @@ class CreditScoreParameterController extends Controller
      */
     public function show($id)
     {
-        return view('bank::show');
+        $findCS = CreditScoreParameter::where('uuid',$id)->first();
+        if ($findCS) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Data retrieved successfully',
+                'data' => $findCS
+            ], 200);
+        }
     }
 
     /**
