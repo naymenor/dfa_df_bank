@@ -223,7 +223,7 @@ class DatabaseSeeder extends Seeder
 
         foreach ($parameters as $parameter) {
             CreditScoreParameter::create(array_merge($parameter, [
-                'id' => Str::uuid(),
+                'uuid' => Str::uuid()->toString(),
                 'data_source' => 'SYSTEM',
                 'created_by' => 'SYSTEM',
             ]));
