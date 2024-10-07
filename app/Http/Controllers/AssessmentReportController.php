@@ -125,9 +125,9 @@ class AssessmentReportController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $uuid)
+    public function update(Request $request, $id)
     {
-        $customer = AssessmentReport::where('customer_id', $uuid)->first();
+        $customer = AssessmentReport::where('customer_id', $id)->first();
         if($customer){
             if($request->has('personal_information')){
                 $customer->personal_information = $request->personal_information;
