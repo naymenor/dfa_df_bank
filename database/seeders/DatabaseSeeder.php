@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Models\CreditScoreParameter;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -221,7 +222,11 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($parameters as $parameter) {
-            CreditScoreParameter::create($parameter);
+            CreditScoreParameter::create(array_merge($parameter, [
+                'id' => Str::uuid(),
+                'data_source' => 'SYSTEM',
+                'created_by' => 'SYSTEM',
+            ]));
         }
     }
 }
