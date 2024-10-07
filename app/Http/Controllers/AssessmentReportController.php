@@ -64,9 +64,8 @@ class AssessmentReportController extends Controller
                 $uuid = Str::uuid()->toString();
 
 
-                $emi = AssessmentReport::create([
+                $assessmentreport = AssessmentReport::create([
                     'uuid' => $uuid,
-                    // 'bank_id' => Auth::user()->bank->id,
                     'customer_id' => $request->customer_id,
                     'bank_id' => 1,
                     'nid' => $request->nid,
@@ -78,11 +77,11 @@ class AssessmentReportController extends Controller
 
                 ]);
 
-                if ($emi) {
+                if ($assessmentreport) {
                     return response()->json([
                         'success' => true,
                         'message' => 'Emi created Successfully',
-                        'data' => $emi
+                        'data' => $assessmentreport
                     ], 202);
                 } else {
                     return response()->json([
@@ -105,6 +104,14 @@ class AssessmentReportController extends Controller
     public function show(string $id)
     {
         //
+        $findAr = AssessmentReport::where('customer_id',$id)->first();
+        if ($findAr) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Data retrieved successfully',
+                'data' => $findAr
+            ], 200);
+        }
     }
 
     /**
@@ -120,7 +127,7 @@ class AssessmentReportController extends Controller
      */
     public function update(Request $request, $uuid)
     {
-        $customer = AssessmentReport::where('uuid', $uuid)->first();
+        $customer = AssessmentReport::where('customer_id', $uuid)->first();
         if($customer){
             if($request->has('personal_information')){
                 $customer->personal_information = $request->personal_information;
