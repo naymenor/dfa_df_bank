@@ -53,7 +53,7 @@ class CustomerDocumentController extends Controller
                 if (is_null($document)) {
                     $document = CustomerDocument::create([
                         'uuid' => $uuid,
-                        'customer_id' => Auth::user()->customer->id,
+                        'customer_id' => $request->customer_id,
                         'status' => 0,
                     ]);
                 }

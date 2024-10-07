@@ -168,6 +168,12 @@ class AssessmentReportController extends Controller
             if($request->has('check_live_face')){
                 $customer->check_live_face = $request->check_live_face;
             }
+            if($request->has('mobile')){
+                $customer->mobile = $request->mobile;
+            }
+            if($request->has('customer_acc_no')){
+                $customer->customer_acc_no = $request->customer_acc_no;
+            }
             $customer->save();
             return response()->json([
                 'success' => true,
