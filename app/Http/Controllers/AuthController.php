@@ -40,7 +40,7 @@ class AuthController extends Controller
         
         $user = Auth::user();
         $token = $user->createToken('API Token')->plainTextToken;
-        $userRole = $user->role->role_name;
+        //$userRole = $user->role->role_name;
 
         return response()->json(['token' => $token, 'id' => $user->id, 'user_role' => $userRole], 200);
     }
