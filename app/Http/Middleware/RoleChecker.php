@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Models\userRole;
 
 class RoleChecker
 {
@@ -13,8 +14,11 @@ class RoleChecker
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
+    
+
     public function handle(Request $request, Closure $next, $admin, $buinessDep, $loanDep): Response
     {
+        $userRole = userRole::where('user_id', auth()->id)->firstOrFail();
         return $next($request);
     }
 }
