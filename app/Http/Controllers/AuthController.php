@@ -35,10 +35,13 @@ class AuthController extends Controller
             return response()->json(['message' => 'Invalid login details'], 401);
         }
 
-        $user = User::where('email', $request->email)->firstOrFail();
-        $userRole = userRole::where('user_id', $user->id)->firstOrFail();
-        $token = $user->createToken('API Token')->plainTextToken;
+        //$user = User::where('email', $request->email)->firstOrFail();
 
-        return response()->json(['token' => $token, 'id' =>Auth(), 'user_role' => $userRole->role_name], 200);
+        
+        $user = Auth::user();
+        $token = $user->createToken('API Token')->plainTextToken;
+        $userRole = $user->role->role_name;
+
+        return response()->json(['token' => $token, 'id' => $user->id, 'user_role' => $userRole], 200);
     }
 }
