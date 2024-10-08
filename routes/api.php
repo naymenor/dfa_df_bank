@@ -27,7 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::resource('/bankst', BankStatementInfoController::class);
-Route::group(["prefix"=>"dbl",'middleware' => ['auth:sanctum']],function(){
+Route::group(["prefix"=>"dbl",'middleware' => ['auth:sanctum','roleChecker:admin,null,null']],function(){
     Route::resource('/emi', EmiParameterController::class);
     Route::resource('/CS', CreditScoreParameterController::class);
     Route::resource('/customer', AssessmentReportController::class);
