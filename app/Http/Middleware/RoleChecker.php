@@ -26,14 +26,14 @@ class RoleChecker
         $userRole = userRole::where('user_id', Auth::user()->id)->select('role_name')->first();
         // 'user_role' => $userRole->role_name,
         // return $next($request);
-
-        if (in_array($admin, $userRole->role_name)) {
+        $role[] = $userRole->role_name;
+        if (in_array($admin, $role)) {
             return $next($request);
         }
-        else if (in_array($buinessDep, $userRole->role_name)) {
+        else if (in_array($buinessDep, $role)) {
             return $next($request);
         }
-        else if (in_array($loanDep, $userRole->role_name)) {
+        else if (in_array($loanDep, $role)) {
             return $next($request);
         }
         return response()->json(['success' => false,'message' => 'Unauthorized'], 401);
