@@ -29,42 +29,39 @@ class DatabaseSeeder extends Seeder
             'email' => 'dfadmin@df.com',
             'password' => Hash::make('123456'), // Encrypt the password
         ]);
-        if($user)
-        {
+  
             userRole::created([
             'user_id' => $user->id,
             'role_name' => 'admin',
             'status' => 1,
             ]);
-        }
+
 
         $user2 = User::create([
             'name' => 'DF Business',
             'email' => 'dfbusiness@df.com',
             'password' => Hash::make('123456'), // Encrypt the password
         ]);
-        if($user2)
-        {
+ 
             userRole::created([
             'user_id' => $user2->id,
             'role_name' => 'buinessDep',
             'status' => 1,
             ]);
-        }
+        
 
         $user3 = User::create([
             'name' => 'DF Loan',
             'email' => 'dfloan@df.com',
             'password' => Hash::make('123456'), // Encrypt the password
         ]);
-        if($user3)
-        {
+
             userRole::created([
             'user_id' => $user3->id,
             'role_name' => 'loanDep',
             'status' => 1,
             ]);
-        }
+
         
         $parameters = [
             [
