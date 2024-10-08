@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Models\CreditScoreParameter;
+use App\Models\userRole;
 use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
@@ -23,12 +24,48 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        User::create([
+        $user = User::create([
             'name' => 'DF User',
             'email' => 'dfadmin@df.com',
-            'password' => Hash::make('password'), // Encrypt the password
+            'password' => Hash::make('123456'), // Encrypt the password
         ]);
+        if($user)
+        {
+            userRole::created([
+            'user_id' => $user->id,
+            'role_name' => 'admin',
+            'status' => 1,
+            ]);
+        }
 
+        $user2 = User::create([
+            'name' => 'DF Business',
+            'email' => 'dfbusiness@df.com',
+            'password' => Hash::make('123456'), // Encrypt the password
+        ]);
+        if($user2)
+        {
+            userRole::created([
+            'user_id' => $user2->id,
+            'role_name' => 'buinessDep',
+            'status' => 1,
+            ]);
+        }
+
+        $user3 = User::create([
+            'name' => 'DF Loan',
+            'email' => 'dfloan@df.com',
+            'password' => Hash::make('123456'), // Encrypt the password
+        ]);
+        if($user3)
+        {
+            userRole::created([
+            'user_id' => $user3->id,
+            'role_name' => 'loanDep',
+            'status' => 1,
+            ]);
+        }
+        
         $parameters = [
             [
                 'ParameterName' => 'Regular Cashflow Earning',
