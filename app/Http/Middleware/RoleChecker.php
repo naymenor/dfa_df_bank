@@ -18,7 +18,7 @@ class RoleChecker
 
     public function handle(Request $request, Closure $next, $admin, $buinessDep, $loanDep): Response
     {
-        $userRole = userRole::where('user_id', auth()->id)->firstOrFail();
+        //$userRole = userRole::where('user_id', $user->id)->firstOrFail();
         return $next($request);
     }
 }
