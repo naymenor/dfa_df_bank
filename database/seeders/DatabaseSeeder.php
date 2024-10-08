@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123456'), // Encrypt the password
         ]);
   
-            userRole::created([
+            userRole::create([
             'user_id' => $user->id,
             'role_name' => 'admin',
             'status' => 1,
@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123456'), // Encrypt the password
         ]);
  
-            userRole::created([
+            userRole::create([
             'user_id' => $user2->id,
             'role_name' => 'buinessDep',
             'status' => 1,
@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123456'), // Encrypt the password
         ]);
 
-            userRole::created([
+            userRole::create([
             'user_id' => $user3->id,
             'role_name' => 'loanDep',
             'status' => 1,
