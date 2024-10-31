@@ -163,7 +163,6 @@ class EmiParameterController extends Controller
                 }
 
                 $emiupdate = $request->only([
-                    'uuid',
                     'bank_id',
                     'emi_no',
                     'title',
